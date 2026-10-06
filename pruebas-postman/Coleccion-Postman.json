@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "LaTiendaDeNatty API - GA7-220501096-AA5-EV03",
+    "description": "Pruebas manuales de productos y pedidos. No requiere conexión con el frontend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3001/api/v1" },
+    { "key": "productId", "value": "1" },
+    { "key": "orderId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Salud API",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Productos",
+      "item": [
+        { "name": "Listar productos", "request": { "method": "GET", "url": "{{baseUrl}}/products" } },
+        { "name": "Consultar producto", "request": { "method": "GET", "url": "{{baseUrl}}/products/{{productId}}" } },
+        {
+          "name": "Crear producto",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Crema hidratante\",\n  \"description\": \"Hidratante para uso diario\",\n  \"price\": 45900,\n  \"stock\": 25,\n  \"category\": \"Cuidado facial\"\n}"
+            },
+            "url": "{{baseUrl}}/products"
+          }
+        },
+        {
+          "name": "Actualizar producto",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Crema hidratante\",\n  \"description\": \"Hidratante para uso diario\",\n  \"price\": 47900,\n  \"stock\": 20,\n  \"category\": \"Cuidado facial\"\n}"
+            },
+            "url": "{{baseUrl}}/products/{{productId}}"
+          }
+        },
+        { "name": "Eliminar producto", "request": { "method": "DELETE", "url": "{{baseUrl}}/products/{{productId}}" } }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Crear pedido",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"David Tabares\",\n  \"customerEmail\": \"david@example.com\",\n  \"items\": [\n    { \"productId\": 1, \"quantity\": 2 }\n  ]\n}"
+            },
+            "url": "{{baseUrl}}/orders"
+          }
+        },
+        { "name": "Consultar pedido", "request": { "method": "GET", "url": "{{baseUrl}}/orders/{{orderId}}" } }
+      ]
+    }
+  ]
+}

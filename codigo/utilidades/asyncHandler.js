@@ -1,0 +1,6 @@
+// Propaga errores de controladores async al middleware central de Express 4.
+module.exports = function asyncHandler(handler) {
+  return function wrappedHandler(req, res, next) {
+    Promise.resolve(handler(req, res, next)).catch(next);
+  };
+};

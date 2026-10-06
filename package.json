@@ -1,0 +1,18 @@
+{
+  "name": "latienda-natty-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API REST independiente para la evidencia GA7-220501096-AA5-EV03",
+  "main": "codigo/server.js",
+  "scripts": {
+    "start": "node codigo/server.js",
+    "dev": "node --watch codigo/server.js",
+    "check": "node --check codigo/server.js && node --check codigo/app.js && node --check codigo/controladores/productController.js && node --check codigo/controladores/orderController.js && node --check codigo/modelos/productModel.js && node --check codigo/modelos/orderModel.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "mysql2": "^3.12.0"
+  }
+}
