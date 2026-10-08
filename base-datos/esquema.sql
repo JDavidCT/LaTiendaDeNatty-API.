@@ -1,6 +1,6 @@
 -- Esquema exclusivo para la API de la evidencia; no altera la base latienda existente.
 CREATE DATABASE IF NOT EXISTS latienda_api
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE latienda_api;
 
 CREATE TABLE IF NOT EXISTS api_productos (
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS api_productos (
   actualizado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id_producto),
   CONSTRAINT chk_api_productos_precio CHECK (precio > 0)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS api_pedidos (
   id_pedido INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS api_pedidos (
   PRIMARY KEY (id_pedido),
   KEY ix_api_pedidos_correo (correo_cliente),
   KEY ix_api_pedidos_fecha (fecha)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS api_detalle_pedido (
   id_detalle INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -44,4 +44,4 @@ CREATE TABLE IF NOT EXISTS api_detalle_pedido (
   CONSTRAINT fk_api_detalle_producto
     FOREIGN KEY (id_producto) REFERENCES api_productos (id_producto) ON DELETE RESTRICT,
   CONSTRAINT chk_api_detalle_cantidad CHECK (cantidad > 0)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
