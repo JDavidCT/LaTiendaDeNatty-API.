@@ -18,6 +18,8 @@ Servicio web independiente desarrollado con **Node.js**, **Express** y **MySQL**
    DB_USER=root
    DB_PASSWORD=tu_contraseña
    DB_NAME=latienda_api
+   JWT_SECRET=un-secreto-aleatorio-de-al-menos-32-bytes
+   JWT_EXPIRES_IN=1h
 
  * Instalar Dependencias e Iniciar:
    Abre la consola en la carpeta del proyecto y ejecuta:
@@ -25,7 +27,14 @@ Servicio web independiente desarrollado con **Node.js**, **Express** y **MySQL**
 npm run dev
 
    El servidor se iniciará en http://localhost:3001/api/v1.
+
+   Para ejecutar las pruebas unitarias: `npm test`.
+
  Endpoints Disponibles
+Autenticación
+ * POST /api/v1/auth/register — Registrar usuario (`name`, `email`, `password`).
+ * POST /api/v1/auth/login — Iniciar sesión (`email`, `password`).
+ * GET /api/v1/auth/profile — Obtener el perfil; requiere `Authorization: Bearer <token>`.
 Productos
  * GET /api/v1/products — Obtener todos los productos.
  * GET /api/v1/products/:id — Obtener un producto por su ID.

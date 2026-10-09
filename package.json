@@ -6,13 +6,21 @@
   "main": "codigo/server.js",
   "scripts": {
     "start": "node codigo/server.js",
-    "dev": "node --watch codigo/server.js",
-    "check": "node --check codigo/server.js && node --check codigo/app.js && node --check codigo/controladores/productController.js && node --check codigo/controladores/orderController.js && node --check codigo/modelos/productModel.js && node --check codigo/modelos/orderModel.js"
+    "dev": "nodemon codigo/server.js",
+    "test": "jest --runInBand",
+    "check": "node --check codigo/server.js && node --check codigo/app.js && node --check codigo/controladores/authController.js && node --check codigo/controladores/productController.js && node --check codigo/controladores/orderController.js && node --check codigo/middlewares/authMiddleware.js && node --check codigo/modelos/authModel.js && node --check codigo/modelos/productModel.js && node --check codigo/modelos/orderModel.js && node --check codigo/rutas/authRoutes.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
   }
 }

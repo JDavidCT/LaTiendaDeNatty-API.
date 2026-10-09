@@ -3,6 +3,16 @@ CREATE DATABASE IF NOT EXISTS latienda_api
   CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE latienda_api;
 
+CREATE TABLE IF NOT EXISTS api_usuarios (
+  id_usuario INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL,
+  correo VARCHAR(150) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id_usuario),
+  UNIQUE KEY uq_api_usuarios_correo (correo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE IF NOT EXISTS api_productos (
   id_producto INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(100) NOT NULL,
